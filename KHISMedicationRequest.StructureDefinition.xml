@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="https://k-his.or.kr/fhir/StructureDefinition/khis-medicationrequest" />
+  <name value="KHISMedicationRequest" />
+  <status value="draft" />
+  <fhirVersion value="4.0.1" />
+  <mapping>
+    <identity value="workflow" />
+    <uri value="http://hl7.org/fhir/workflow" />
+    <name value="Workflow Pattern" />
+  </mapping>
+  <mapping>
+    <identity value="script10.6" />
+    <uri value="http://ncpdp.org/SCRIPT10_6" />
+    <name value="Mapping to NCPDP SCRIPT 10.6" />
+  </mapping>
+  <mapping>
+    <identity value="rim" />
+    <uri value="http://hl7.org/v3" />
+    <name value="RIM Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="w5" />
+    <uri value="http://hl7.org/fhir/fivews" />
+    <name value="FiveWs Pattern Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="v2" />
+    <uri value="http://hl7.org/v2" />
+    <name value="HL7 v2 Mapping" />
+  </mapping>
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="MedicationRequest" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/MedicationRequest" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="MedicationRequest.identifier.system">
+      <path value="MedicationRequest.identifier.system" />
+      <min value="1" />
+    </element>
+    <element id="MedicationRequest.identifier.value">
+      <path value="MedicationRequest.identifier.value" />
+      <min value="1" />
+    </element>
+    <element id="MedicationRequest.intent">
+      <path value="MedicationRequest.intent" />
+      <fixedCode value="order" />
+    </element>
+    <element id="MedicationRequest.medication[x]">
+      <path value="MedicationRequest.medication[x]" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://k-his.or.kr/fhir/StructureDefinition/khis-medication" />
+      </type>
+      <binding>
+        <strength value="preferred" />
+        <valueSet value="https://k-his.or.kr/fhir/ValueSet/medication-code" />
+      </binding>
+    </element>
+    <element id="MedicationRequest.subject">
+      <path value="MedicationRequest.subject" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://k-his.or.kr/fhir/StructureDefinition/khis-patient" />
+      </type>
+    </element>
+    <element id="MedicationRequest.dosageInstruction">
+      <path value="MedicationRequest.dosageInstruction" />
+      <max value="1" />
+    </element>
+    <element id="MedicationRequest.dosageInstruction.timing">
+      <path value="MedicationRequest.dosageInstruction.timing" />
+      <min value="1" />
+    </element>
+    <element id="MedicationRequest.dosageInstruction.timing.repeat">
+      <path value="MedicationRequest.dosageInstruction.timing.repeat" />
+      <min value="1" />
+    </element>
+    <element id="MedicationRequest.dosageInstruction.timing.repeat.bounds[x]">
+      <path value="MedicationRequest.dosageInstruction.timing.repeat.bounds[x]" />
+      <min value="1" />
+      <type>
+        <code value="Period" />
+      </type>
+    </element>
+    <element id="MedicationRequest.dosageInstruction.timing.repeat.bounds[x].start">
+      <path value="MedicationRequest.dosageInstruction.timing.repeat.bounds[x].start" />
+      <min value="1" />
+    </element>
+    <element id="MedicationRequest.dosageInstruction.timing.repeat.bounds[x].end">
+      <path value="MedicationRequest.dosageInstruction.timing.repeat.bounds[x].end" />
+      <min value="1" />
+    </element>
+    <element id="MedicationRequest.dosageInstruction.doseAndRate.dose[x]">
+      <path value="MedicationRequest.dosageInstruction.doseAndRate.dose[x]" />
+      <min value="1" />
+      <type>
+        <code value="Quantity" />
+      </type>
+    </element>
+    <element id="MedicationRequest.dosageInstruction.doseAndRate.dose[x].value">
+      <path value="MedicationRequest.dosageInstruction.doseAndRate.dose[x].value" />
+      <min value="1" />
+    </element>
+    <element id="MedicationRequest.dosageInstruction.doseAndRate.dose[x].unit">
+      <path value="MedicationRequest.dosageInstruction.doseAndRate.dose[x].unit" />
+      <min value="1" />
+    </element>
+  </differential>
+</StructureDefinition>

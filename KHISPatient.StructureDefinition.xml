@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="http://k-his.or.kr/fhir/structureDefinition/khis-patient" />
+  <name value="KHISPatient" />
+  <status value="draft" />
+  <fhirVersion value="4.0.1" />
+  <mapping>
+    <identity value="rim" />
+    <uri value="http://hl7.org/v3" />
+    <name value="RIM Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="cda" />
+    <uri value="http://hl7.org/v3/cda" />
+    <name value="CDA (R2)" />
+  </mapping>
+  <mapping>
+    <identity value="w5" />
+    <uri value="http://hl7.org/fhir/fivews" />
+    <name value="FiveWs Pattern Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="v2" />
+    <uri value="http://hl7.org/v2" />
+    <name value="HL7 v2 Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="loinc" />
+    <uri value="http://loinc.org" />
+    <name value="LOINC code for the element" />
+  </mapping>
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Patient" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Patient" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Patient.identifier">
+      <path value="Patient.identifier" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="type.coding.code" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="1" />
+    </element>
+    <element id="Patient.identifier:mr_Identifier">
+      <path value="Patient.identifier" />
+      <sliceName value="mr_Identifier" />
+    </element>
+    <element id="Patient.identifier:mr_Identifier.type">
+      <path value="Patient.identifier.type" />
+      <min value="1" />
+    </element>
+    <element id="Patient.identifier:mr_Identifier.type.coding.system">
+      <path value="Patient.identifier.type.coding.system" />
+      <fixedUri value="http://terminology.hl7.org/CodeSystem/v2-0203" />
+    </element>
+    <element id="Patient.identifier:mr_Identifier.type.coding.code">
+      <path value="Patient.identifier.type.coding.code" />
+      <fixedCode value="http://terminology.hl7.org/CodeSystem/v2-0203" />
+    </element>
+    <element id="Patient.identifier:mr_Identifier.system">
+      <path value="Patient.identifier.system" />
+      <min value="1" />
+    </element>
+    <element id="Patient.identifier:mr_Identifier.value">
+      <path value="Patient.identifier.value" />
+      <min value="1" />
+    </element>
+    <element id="Patient.identifier:ni_Identifier">
+      <path value="Patient.identifier" />
+      <sliceName value="ni_Identifier" />
+    </element>
+    <element id="Patient.identifier:ni_Identifier.type">
+      <path value="Patient.identifier.type" />
+      <min value="1" />
+    </element>
+    <element id="Patient.identifier:ni_Identifier.type.coding.system">
+      <path value="Patient.identifier.type.coding.system" />
+      <min value="1" />
+      <fixedUri value="http://terminology.hl7.org/CodeSystem/v2-0203" />
+    </element>
+    <element id="Patient.identifier:ni_Identifier.type.coding.code">
+      <path value="Patient.identifier.type.coding.code" />
+      <min value="1" />
+      <fixedCode value="NI" />
+    </element>
+    <element id="Patient.identifier:ni_Identifier.system">
+      <path value="Patient.identifier.system" />
+      <min value="1" />
+    </element>
+    <element id="Patient.identifier:ni_Identifier.value">
+      <path value="Patient.identifier.value" />
+      <min value="1" />
+    </element>
+    <element id="Patient.name">
+      <path value="Patient.name" />
+      <min value="1" />
+    </element>
+    <element id="Patient.name.text">
+      <path value="Patient.name.text" />
+      <min value="1" />
+    </element>
+    <element id="Patient.name.given">
+      <path value="Patient.name.given" />
+      <max value="1" />
+    </element>
+    <element id="Patient.name.prefix">
+      <path value="Patient.name.prefix" />
+      <max value="1" />
+    </element>
+    <element id="Patient.name.suffix">
+      <path value="Patient.name.suffix" />
+      <max value="1" />
+    </element>
+    <element id="Patient.telecom.value">
+      <path value="Patient.telecom.value" />
+      <min value="1" />
+    </element>
+    <element id="Patient.gender">
+      <path value="Patient.gender" />
+      <min value="1" />
+    </element>
+    <element id="Patient.birthDate">
+      <path value="Patient.birthDate" />
+      <min value="1" />
+    </element>
+    <element id="Patient.address.text">
+      <path value="Patient.address.text" />
+      <min value="1" />
+    </element>
+    <element id="Patient.address.country">
+      <path value="Patient.address.country" />
+      <min value="1" />
+      <fixedString value="ko" />
+    </element>
+    <element id="Patient.communication">
+      <path value="Patient.communication" />
+      <max value="1" />
+    </element>
+    <element id="Patient.communication.language.coding">
+      <path value="Patient.communication.language.coding" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Patient.communication.language.coding.system">
+      <path value="Patient.communication.language.coding.system" />
+      <min value="1" />
+      <fixedUri value="urn:ietf:bcp:47" />
+      <binding>
+        <strength value="preferred" />
+        <valueSet value="http://hl7.org/fhir/ValueSet/languages" />
+      </binding>
+    </element>
+    <element id="Patient.communication.language.coding.code">
+      <path value="Patient.communication.language.coding.code" />
+      <min value="1" />
+    </element>
+    <element id="Patient.communication.language.coding.display">
+      <path value="Patient.communication.language.coding.display" />
+      <fixedString value="Korean" />
+    </element>
+  </differential>
+</StructureDefinition>

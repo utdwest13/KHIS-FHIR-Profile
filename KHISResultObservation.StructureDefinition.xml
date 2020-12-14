@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="https://k-his.or.kr/fhir/StructureDefinition/khis-result-observation" />
+  <name value="KHISResultObservation" />
+  <status value="draft" />
+  <fhirVersion value="4.0.1" />
+  <mapping>
+    <identity value="workflow" />
+    <uri value="http://hl7.org/fhir/workflow" />
+    <name value="Workflow Pattern" />
+  </mapping>
+  <mapping>
+    <identity value="sct-concept" />
+    <uri value="http://snomed.info/conceptdomain" />
+    <name value="SNOMED CT Concept Domain Binding" />
+  </mapping>
+  <mapping>
+    <identity value="v2" />
+    <uri value="http://hl7.org/v2" />
+    <name value="HL7 v2 Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="rim" />
+    <uri value="http://hl7.org/v3" />
+    <name value="RIM Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="w5" />
+    <uri value="http://hl7.org/fhir/fivews" />
+    <name value="FiveWs Pattern Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="sct-attr" />
+    <uri value="http://snomed.org/attributebinding" />
+    <name value="SNOMED CT Attribute Binding" />
+  </mapping>
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Observation" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Observation" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Observation.identifier.system">
+      <path value="Observation.identifier.system" />
+      <min value="1" />
+    </element>
+    <element id="Observation.identifier.value">
+      <path value="Observation.identifier.value" />
+      <min value="1" />
+    </element>
+    <element id="Observation.category">
+      <path value="Observation.category" />
+      <min value="1" />
+      <max value="1" />
+      <binding>
+        <strength value="preferred" />
+        <valueSet value="https://k-his.or.kr/fhir/ValueSet/result-category" />
+      </binding>
+    </element>
+    <element id="Observation.category.coding">
+      <path value="Observation.category.coding" />
+      <min value="1" />
+    </element>
+    <element id="Observation.category.coding.system">
+      <path value="Observation.category.coding.system" />
+      <min value="1" />
+      <fixedUri value="https://k-his.or.kr/fhir/CodeSystem/result-category" />
+    </element>
+    <element id="Observation.category.coding.code">
+      <path value="Observation.category.coding.code" />
+      <min value="1" />
+    </element>
+    <element id="Observation.code">
+      <path value="Observation.code" />
+      <binding>
+        <strength value="preferred" />
+        <valueSet value="https://k-his.or.kr/fhir/ValueSet/result-codes" />
+      </binding>
+    </element>
+    <element id="Observation.code.coding">
+      <path value="Observation.code.coding" />
+      <min value="1" />
+    </element>
+    <element id="Observation.code.coding.system">
+      <path value="Observation.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="https://k-his.or.kr/fhir/CodeSystem/result-codes" />
+    </element>
+    <element id="Observation.code.coding.code">
+      <path value="Observation.code.coding.code" />
+      <min value="1" />
+    </element>
+    <element id="Observation.subject">
+      <path value="Observation.subject" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://k-his.or.kr/fhir/StructureDefinition/khis-patient" />
+      </type>
+    </element>
+    <element id="Observation.effective[x]">
+      <path value="Observation.effective[x]" />
+      <min value="1" />
+      <type>
+        <code value="dateTime" />
+      </type>
+      <type>
+        <code value="Period" />
+      </type>
+    </element>
+    <element id="Observation.value[x]">
+      <path value="Observation.value[x]" />
+      <type>
+        <code value="Quantity" />
+      </type>
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+    </element>
+    <element id="Observation.dataAbsentReason.coding">
+      <path value="Observation.dataAbsentReason.coding" />
+      <min value="1" />
+    </element>
+    <element id="Observation.dataAbsentReason.coding.system">
+      <path value="Observation.dataAbsentReason.coding.system" />
+      <fixedUri value="http://terminology.hl7.org/CodeSystem/data-absent-reason" />
+    </element>
+    <element id="Observation.dataAbsentReason.coding.code">
+      <path value="Observation.dataAbsentReason.coding.code" />
+      <fixedCode value="not-applicable" />
+    </element>
+    <element id="Observation.dataAbsentReason.coding.display">
+      <path value="Observation.dataAbsentReason.coding.display" />
+      <fixedString value="Not Applicable" />
+    </element>
+    <element id="Observation.referenceRange.low.value">
+      <path value="Observation.referenceRange.low.value" />
+      <min value="1" />
+    </element>
+    <element id="Observation.referenceRange.high.value">
+      <path value="Observation.referenceRange.high.value" />
+      <min value="1" />
+    </element>
+    <element id="Observation.hasMember">
+      <path value="Observation.hasMember" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://k-his.or.kr/fhir/StructureDefinition/khis-result-observation" />
+      </type>
+    </element>
+    <element id="Observation.component.code">
+      <path value="Observation.component.code" />
+      <binding>
+        <strength value="preferred" />
+        <valueSet value="https://k-his.or.kr/fhir/ValueSet/result-codes" />
+      </binding>
+    </element>
+    <element id="Observation.component.code.coding">
+      <path value="Observation.component.code.coding" />
+      <min value="1" />
+    </element>
+    <element id="Observation.component.code.coding.system">
+      <path value="Observation.component.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="https://k-his.or.kr/fhir/CodeSystem/result-codes" />
+    </element>
+    <element id="Observation.component.code.coding.code">
+      <path value="Observation.component.code.coding.code" />
+      <min value="1" />
+    </element>
+    <element id="Observation.component.value[x]">
+      <path value="Observation.component.value[x]" />
+      <min value="1" />
+      <type>
+        <code value="Quantity" />
+      </type>
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+    </element>
+    <element id="Observation.component.referenceRange.low.value">
+      <path value="Observation.component.referenceRange.low.value" />
+      <min value="1" />
+    </element>
+    <element id="Observation.component.referenceRange.high.value">
+      <path value="Observation.component.referenceRange.high.value" />
+      <min value="1" />
+    </element>
+  </differential>
+</StructureDefinition>

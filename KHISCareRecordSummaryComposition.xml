@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="https://k-his.or.kr/fhir/StructureDefinition/khis-carerecordsummary-composition" />
+  <name value="KHISCareRecordSummaryComposition" />
+  <status value="draft" />
+  <fhirVersion value="4.0.1" />
+  <mapping>
+    <identity value="workflow" />
+    <uri value="http://hl7.org/fhir/workflow" />
+    <name value="Workflow Pattern" />
+  </mapping>
+  <mapping>
+    <identity value="rim" />
+    <uri value="http://hl7.org/v3" />
+    <name value="RIM Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="cda" />
+    <uri value="http://hl7.org/v3/cda" />
+    <name value="CDA (R2)" />
+  </mapping>
+  <mapping>
+    <identity value="fhirdocumentreference" />
+    <uri value="http://hl7.org/fhir/documentreference" />
+    <name value="FHIR DocumentReference" />
+  </mapping>
+  <mapping>
+    <identity value="w5" />
+    <uri value="http://hl7.org/fhir/fivews" />
+    <name value="FiveWs Pattern Mapping" />
+  </mapping>
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Composition" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Composition" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Composition.language">
+      <path value="Composition.language" />
+      <fixedCode value="ko" />
+    </element>
+    <element id="Composition.extension">
+      <path value="Composition.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Composition.extension:khis-informationrecipient">
+      <path value="Composition.extension" />
+      <sliceName value="khis-informationrecipient" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://k-his.or.kr/fhir/StructureDefinition/khis-informationrecipient" />
+      </type>
+    </element>
+    <element id="Composition.status">
+      <path value="Composition.status" />
+      <fixedCode value="final" />
+    </element>
+    <element id="Composition.type.coding">
+      <path value="Composition.type.coding" />
+      <min value="1" />
+    </element>
+    <element id="Composition.type.coding.system">
+      <path value="Composition.type.coding.system" />
+      <min value="1" />
+      <fixedUri value="http://loinc.org" />
+    </element>
+    <element id="Composition.type.coding.code">
+      <path value="Composition.type.coding.code" />
+      <min value="1" />
+      <fixedCode value="34133-9" />
+    </element>
+    <element id="Composition.subject">
+      <path value="Composition.subject" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://k-his.or.kr/fhir/StructureDefinition/khis-patient" />
+      </type>
+    </element>
+    <element id="Composition.subject.reference">
+      <path value="Composition.subject.reference" />
+      <min value="1" />
+    </element>
+    <element id="Composition.author">
+      <path value="Composition.author" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://k-his.or.kr/fhir/StructureDefinition/khis-practitionerrole" />
+        <targetProfile value="https://k-his.or.kr/fhir/StructureDefinition/khis-device" />
+      </type>
+    </element>
+    <element id="Composition.confidentiality">
+      <path value="Composition.confidentiality" />
+      <min value="1" />
+    </element>
+    <element id="Composition.attester.mode">
+      <path value="Composition.attester.mode" />
+      <fixedCode value="professional" />
+    </element>
+    <element id="Composition.attester.party">
+      <path value="Composition.attester.party" />
+      <min value="1" />
+    </element>
+    <element id="Composition.custodian">
+      <path value="Composition.custodian" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://k-his.or.kr/fhir/StructureDefinition/khis-organization" />
+      </type>
+    </element>
+    <element id="Composition.event.code">
+      <path value="Composition.event.code" />
+      <min value="1" />
+    </element>
+    <element id="Composition.event.code.coding">
+      <path value="Composition.event.code.coding" />
+      <min value="1" />
+    </element>
+    <element id="Composition.event.code.coding.system">
+      <path value="Composition.event.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="http://terminology.hl7.org/CodeSystem/v3-ActCode" />
+    </element>
+    <element id="Composition.event.code.coding.code">
+      <path value="Composition.event.code.coding.code" />
+      <min value="1" />
+    </element>
+    <element id="Composition.event.period">
+      <path value="Composition.event.period" />
+      <min value="1" />
+    </element>
+    <element id="Composition.event.period.start">
+      <path value="Composition.event.period.start" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section">
+      <path value="Composition.section" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="code.coding.code" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="1" />
+    </element>
+    <element id="Composition.section:problem">
+      <path value="Composition.section" />
+      <sliceName value="problem" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Composition.section:problem.title">
+      <path value="Composition.section.title" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:problem.code">
+      <path value="Composition.section.code" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:problem.code.coding">
+      <path value="Composition.section.code.coding" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:problem.code.coding.system">
+      <path value="Composition.section.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="http://loinc.org" />
+    </element>
+    <element id="Composition.section:problem.code.coding.code">
+      <path value="Composition.section.code.coding.code" />
+      <min value="1" />
+      <fixedCode value="11450-4" />
+    </element>
+    <element id="Composition.section:problem.code.coding.display">
+      <path value="Composition.section.code.coding.display" />
+      <fixedString value="Problem list" />
+    </element>
+    <element id="Composition.section:problem.text">
+      <path value="Composition.section.text" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:problem.entry">
+      <path value="Composition.section.entry" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://k-his.or.kr/fhir/StructureDefinition/khis-condition" />
+      </type>
+    </element>
+    <element id="Composition.section:medication-order">
+      <path value="Composition.section" />
+      <sliceName value="medication-order" />
+      <max value="1" />
+    </element>
+    <element id="Composition.section:medication-order.title">
+      <path value="Composition.section.title" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:medication-order.code">
+      <path value="Composition.section.code" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:medication-order.code.coding">
+      <path value="Composition.section.code.coding" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:medication-order.code.coding.system">
+      <path value="Composition.section.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="http://loinc.org" />
+    </element>
+    <element id="Composition.section:medication-order.code.coding.code">
+      <path value="Composition.section.code.coding.code" />
+      <min value="1" />
+      <fixedCode value="57833-6" />
+    </element>
+    <element id="Composition.section:medication-order.code.coding.display">
+      <path value="Composition.section.code.coding.display" />
+      <fixedString value="Prescription for Medication" />
+    </element>
+    <element id="Composition.section:medication-order.text">
+      <path value="Composition.section.text" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:medication-order.entry">
+      <path value="Composition.section.entry" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://k-his.or.kr/fhir/StructureDefinition/khis-medicationrequest" />
+      </type>
+    </element>
+    <element id="Composition.section:result">
+      <path value="Composition.section" />
+      <sliceName value="result" />
+      <max value="1" />
+    </element>
+    <element id="Composition.section:result.title">
+      <path value="Composition.section.title" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:result.code">
+      <path value="Composition.section.code" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:result.code.coding">
+      <path value="Composition.section.code.coding" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:result.code.coding.system">
+      <path value="Composition.section.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="http://loinc.org" />
+    </element>
+    <element id="Composition.section:result.code.coding.code">
+      <path value="Composition.section.code.coding.code" />
+      <min value="1" />
+      <fixedCode value="30954-2" />
+    </element>
+    <element id="Composition.section:result.code.coding.display">
+      <path value="Composition.section.code.coding.display" />
+      <fixedString value="Relevant diagnostic tests and/or laboratory data" />
+    </element>
+    <element id="Composition.section:result.text">
+      <path value="Composition.section.text" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:result.entry">
+      <path value="Composition.section.entry" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://example.org/fhir/StructureDefinition/crs-result-observation" />
+      </type>
+    </element>
+    <element id="Composition.section:procedure">
+      <path value="Composition.section" />
+      <sliceName value="procedure" />
+      <max value="1" />
+    </element>
+    <element id="Composition.section:procedure.title">
+      <path value="Composition.section.title" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:procedure.code">
+      <path value="Composition.section.code" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:procedure.code.coding">
+      <path value="Composition.section.code.coding" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:procedure.code.coding.system">
+      <path value="Composition.section.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="http://loinc.org" />
+    </element>
+    <element id="Composition.section:procedure.code.coding.code">
+      <path value="Composition.section.code.coding.code" />
+      <min value="1" />
+      <fixedCode value="47519-4" />
+    </element>
+    <element id="Composition.section:procedure.text">
+      <path value="Composition.section.text" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:procedure.entry">
+      <path value="Composition.section.entry" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://k-his.or.kr/fhir/StructureDefinition/khis-procedure" />
+      </type>
+    </element>
+    <element id="Composition.section:allergy-and-intolerance">
+      <path value="Composition.section" />
+      <sliceName value="allergy-and-intolerance" />
+      <max value="1" />
+    </element>
+    <element id="Composition.section:allergy-and-intolerance.title">
+      <path value="Composition.section.title" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:allergy-and-intolerance.code">
+      <path value="Composition.section.code" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:allergy-and-intolerance.code.coding">
+      <path value="Composition.section.code.coding" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:allergy-and-intolerance.code.coding.system">
+      <path value="Composition.section.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="http://loinc.org" />
+    </element>
+    <element id="Composition.section:allergy-and-intolerance.code.coding.code">
+      <path value="Composition.section.code.coding.code" />
+      <min value="1" />
+      <fixedCode value="48765-2" />
+    </element>
+    <element id="Composition.section:allergy-and-intolerance.text">
+      <path value="Composition.section.text" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:allergy-and-intolerance.entry">
+      <path value="Composition.section.entry" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://example.org/fhir/StructureDefinition/crs-allergyIntolerance" />
+      </type>
+    </element>
+    <element id="Composition.section:immunization">
+      <path value="Composition.section" />
+      <sliceName value="immunization" />
+      <max value="1" />
+    </element>
+    <element id="Composition.section:immunization.title">
+      <path value="Composition.section.title" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:immunization.code">
+      <path value="Composition.section.code" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:immunization.code.coding">
+      <path value="Composition.section.code.coding" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:immunization.code.coding.system">
+      <path value="Composition.section.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="http://loinc.org" />
+    </element>
+    <element id="Composition.section:immunization.code.coding.code">
+      <path value="Composition.section.code.coding.code" />
+      <min value="1" />
+      <fixedCode value="11369-6" />
+    </element>
+    <element id="Composition.section:immunization.text">
+      <path value="Composition.section.text" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:immunization.entry">
+      <path value="Composition.section.entry" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://k-his.or.kr/fhir/StructureDefinition/khis-immunization" />
+      </type>
+    </element>
+    <element id="Composition.section:vital-signs">
+      <path value="Composition.section" />
+      <sliceName value="vital-signs" />
+      <max value="1" />
+    </element>
+    <element id="Composition.section:vital-signs.title">
+      <path value="Composition.section.title" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:vital-signs.code">
+      <path value="Composition.section.code" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:vital-signs.code.coding">
+      <path value="Composition.section.code.coding" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:vital-signs.code.coding.system">
+      <path value="Composition.section.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="http://loinc.org" />
+    </element>
+    <element id="Composition.section:vital-signs.code.coding.code">
+      <path value="Composition.section.code.coding.code" />
+      <min value="1" />
+      <fixedCode value="8716-3" />
+    </element>
+    <element id="Composition.section:vital-signs.text">
+      <path value="Composition.section.text" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:vital-signs.entry">
+      <path value="Composition.section.entry" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="http://example.org/fhir/StructureDefinition/crs-vitalSign-observation" />
+      </type>
+    </element>
+    <element id="Composition.section:social-history">
+      <path value="Composition.section" />
+      <sliceName value="social-history" />
+      <max value="1" />
+    </element>
+    <element id="Composition.section:social-history.title">
+      <path value="Composition.section.title" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:social-history.code">
+      <path value="Composition.section.code" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:social-history.code.coding">
+      <path value="Composition.section.code.coding" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:social-history.code.coding.system">
+      <path value="Composition.section.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="http://loinc.org" />
+    </element>
+    <element id="Composition.section:social-history.code.coding.code">
+      <path value="Composition.section.code.coding.code" />
+      <min value="1" />
+      <fixedCode value="29762-2" />
+    </element>
+    <element id="Composition.section:social-history.code.coding.display">
+      <path value="Composition.section.code.coding.display" />
+      <fixedString value="History of Infectious Disease" />
+    </element>
+    <element id="Composition.section:social-history.text">
+      <path value="Composition.section.text" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:social-history.entry">
+      <path value="Composition.section.entry" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://k-his.or.kr/fhir/StructureDefinition/khis-socialhistory-observation" />
+      </type>
+    </element>
+    <element id="Composition.section:infection">
+      <path value="Composition.section" />
+      <sliceName value="infection" />
+      <max value="1" />
+    </element>
+    <element id="Composition.section:infection.title">
+      <path value="Composition.section.title" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:infection.code">
+      <path value="Composition.section.code" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:infection.code.coding">
+      <path value="Composition.section.code.coding" />
+      <min value="1" />
+    </element>
+    <element id="Composition.section:infection.code.coding.system">
+      <path value="Composition.section.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="http://loinc.org" />
+    </element>
+    <element id="Composition.section:infection.code.coding.code">
+      <path value="Composition.section.code.coding.code" />
+      <min value="1" />
+      <fixedCode value="56838-6" />
+    </element>
+    <element id="Composition.section:infection.code.coding.display">
+      <path value="Composition.section.code.coding.display" />
+      <fixedString value="56838-6" />
+    </element>
+    <element id="Composition.section:infection.text">
+      <path value="Composition.section.text" />
+      <min value="1" />
+    </element>
+  </differential>
+</StructureDefinition>

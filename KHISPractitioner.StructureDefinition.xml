@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="https://k-his.or.kr/fhir/StructureDefinition/khis-practitioner" />
+  <name value="KHISPractitioner" />
+  <status value="draft" />
+  <fhirVersion value="4.0.1" />
+  <mapping>
+    <identity value="v2" />
+    <uri value="http://hl7.org/v2" />
+    <name value="HL7 v2 Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="rim" />
+    <uri value="http://hl7.org/v3" />
+    <name value="RIM Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="servd" />
+    <uri value="http://www.omg.org/spec/ServD/1.0/" />
+    <name value="ServD" />
+  </mapping>
+  <mapping>
+    <identity value="w5" />
+    <uri value="http://hl7.org/fhir/fivews" />
+    <name value="FiveWs Pattern Mapping" />
+  </mapping>
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Practitioner" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Practitioner.identifier.system">
+      <path value="Practitioner.identifier.system" />
+      <min value="1" />
+    </element>
+    <element id="Practitioner.identifier.value">
+      <path value="Practitioner.identifier.value" />
+      <min value="1" />
+    </element>
+    <element id="Practitioner.name.text">
+      <path value="Practitioner.name.text" />
+      <min value="1" />
+    </element>
+    <element id="Practitioner.name.given">
+      <path value="Practitioner.name.given" />
+      <max value="1" />
+    </element>
+    <element id="Practitioner.telecom.system">
+      <path value="Practitioner.telecom.system" />
+      <min value="1" />
+      <fixedCode value="phone" />
+    </element>
+    <element id="Practitioner.telecom.value">
+      <path value="Practitioner.telecom.value" />
+      <min value="1" />
+    </element>
+    <element id="Practitioner.address.text">
+      <path value="Practitioner.address.text" />
+      <min value="1" />
+    </element>
+    <element id="Practitioner.address.country">
+      <path value="Practitioner.address.country" />
+      <min value="1" />
+    </element>
+    <element id="Practitioner.qualification">
+      <path value="Practitioner.qualification" />
+      <min value="1" />
+    </element>
+    <element id="Practitioner.qualification.identifier">
+      <path value="Practitioner.qualification.identifier" />
+      <min value="1" />
+    </element>
+    <element id="Practitioner.qualification.identifier.system">
+      <path value="Practitioner.qualification.identifier.system" />
+      <min value="1" />
+    </element>
+    <element id="Practitioner.qualification.identifier.value">
+      <path value="Practitioner.qualification.identifier.value" />
+      <min value="1" />
+    </element>
+    <element id="Practitioner.qualification.code">
+      <path value="Practitioner.qualification.code" />
+      <binding>
+        <strength value="preferred" />
+        <description value="Korean qualification for the practitioner" />
+        <valueSet value="https://k-his.or.kr/fhir/ValueSet/practitioner-qualification" />
+      </binding>
+    </element>
+    <element id="Practitioner.qualification.code.coding">
+      <path value="Practitioner.qualification.code.coding" />
+      <min value="1" />
+    </element>
+    <element id="Practitioner.qualification.code.coding.system">
+      <path value="Practitioner.qualification.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="https://www.mohw.og.kr" />
+    </element>
+    <element id="Practitioner.qualification.code.coding.code">
+      <path value="Practitioner.qualification.code.coding.code" />
+      <min value="1" />
+    </element>
+  </differential>
+</StructureDefinition>
